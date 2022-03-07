@@ -16,7 +16,8 @@
   "scripts": {
     "prepare": "husky install",
     "start": "node src",
-    "test": "jest --passWithNoTests"
+    "test": "jest",
+    "test-coverage": "jest --coverage --watchAll"
   },
   "dependencies": {
     "debug": "^4.3.3",
@@ -24,5 +25,13 @@
     "express": "^4.17.3",
     "helmet": "^5.0.2",
     "morgan": "^1.10.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/**/*.test.js",
+      "!src/**/launchers/**/*.js",
+      "!src/index.js"
+    ]
   }
 }

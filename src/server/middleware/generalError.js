@@ -5,7 +5,7 @@ const generalError = (err, req, res, next) => {
   debug("~~~ Error ~~~");
   debug(err.message ?? "no error message");
   const status = err.status ?? 500;
-  const message = err.message ? err.message : "no message";
+  const message = err.message ? err.message : "no error message";
   res.status(status).json({ error: true, message });
 };
 
