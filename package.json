@@ -15,6 +15,6 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "test": "jest --passWithNoTest"
+    "test": "jest --passWithNoTests"
   }
 }
