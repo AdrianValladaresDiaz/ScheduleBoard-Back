@@ -15,6 +15,7 @@
   },
   "scripts": {
     "prepare": "husky install",
+    "start": "node src/server",
     "test": "jest --passWithNoTests"
   },
   "dependencies": {
