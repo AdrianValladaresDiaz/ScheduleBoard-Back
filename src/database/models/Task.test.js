@@ -12,7 +12,7 @@ describe("Given a Task model", () => {
   });
 
   describe("When validating a valid object", () => {
-    test("Then it should ", () => {
+    test("Then it should not throw a validation error", () => {
       const validTask = {
         title: "task title",
         description: "an arbitratily long description, in string form",

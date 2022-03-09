@@ -15,7 +15,7 @@ const getUserProjectsController = async (req, res, next) => {
 
     return res.json({
       error: false,
-      message: { user, projects },
+      message: { projects },
     });
   } catch (error) {
     return next(error);
