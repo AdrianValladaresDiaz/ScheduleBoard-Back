@@ -14,6 +14,7 @@ const ProjectSchema = new Schema({
   },
   users: {
     type: [mongoose.SchemaTypes.ObjectId],
+    ref: "User",
   },
   taskLists: {
     type: [TaskListSchema],

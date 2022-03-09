@@ -22,6 +22,7 @@ const UserSchema = new Schema({
   },
   projects: {
     type: [mongoose.SchemaTypes.ObjectId],
+    ref: "Project",
   },
 });
 
