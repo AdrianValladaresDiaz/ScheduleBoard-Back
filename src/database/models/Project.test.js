@@ -74,7 +74,6 @@ describe("Given a Project model", () => {
 
       const checkResult = Project.checkIfValid(validProject);
 
-      console.log(checkResult);
       expect(checkResult).not.toHaveProperty("error");
     });
   });
