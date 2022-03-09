@@ -21,17 +21,15 @@ const TaskSchema = new Schema({
   },
 });
 
-TaskSchema.statics.checkIfValid = (obj) => {
-  const joiSchema = Joi.object({
-    title: Joi.string().max(35).required(),
-    description: Joi.string(),
-    workHours: Joi.number(),
-    dueDate: Joi.date(),
-  });
+const TaskJoiSchema = Joi.object({
+  title: Joi.string().max(35).required(),
+  description: Joi.string(),
+  workHours: Joi.number(),
+  dueDate: Joi.date(),
+});
 
-  return joiSchema.validate(obj);
-};
+TaskSchema.statics.checkIfValid = (obj) => TaskJoiSchema.validate(obj);
 
 const Task = model("Task", TaskSchema, "tasks");
 
-module.exports = { Task, TaskSchema };
+module.exports = { Task, TaskSchema, TaskJoiSchema };

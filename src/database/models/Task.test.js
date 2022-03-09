@@ -13,14 +13,14 @@ describe("Given a Task model", () => {
 
   describe("When validating a valid object", () => {
     test("Then it should ", () => {
-      const invalidTask = {
+      const validTask = {
         title: "task title",
         description: "an arbitratily long description, in string form",
         workHours: 84,
         dueDate: Date(2022, 5, 21),
       };
 
-      const checkResult = Task.checkIfValid(invalidTask);
+      const checkResult = Task.checkIfValid(validTask);
 
       expect(checkResult).not.toHaveProperty("error");
     });
