@@ -7,15 +7,13 @@ const TaskListSchema = new Schema({
   tasks: { type: [TaskSchema] },
 });
 
-TaskListSchema.statics.checkIfValid = (obj) => {
-  const joiSchema = Joi.object({
-    title: Joi.string().max(35).required(),
-    tasks: Joi.array().items(TaskJoiSchema),
-  });
+const TaskListJoiSchema = Joi.object({
+  title: Joi.string().max(35).required(),
+  tasks: Joi.array().items(TaskJoiSchema),
+});
 
-  return joiSchema.validate(obj);
-};
+TaskListSchema.statics.checkIfValid = (obj) => TaskListJoiSchema.validate(obj);
 
-const TaskList = model("TaskList", TaskListSchema, "taskLists");
+const TaskList = model("TaskList", TaskListSchema);
 
-module.exports = { TaskList, TaskListSchema };
+module.exports = { TaskList, TaskListSchema, TaskListJoiSchema };
