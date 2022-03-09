@@ -14,7 +14,7 @@ const checkJwtHeader = (req, res, next) => {
   if (validationError) {
     debug("found error validating jwt in request header");
     const error = new Error(validationError.details[0].message);
-    error.status = 500;
+    error.status = 401;
     return next(error);
   }
   debug("validated headers successfully");
