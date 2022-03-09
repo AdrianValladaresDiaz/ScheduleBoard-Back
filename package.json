@@ -25,6 +25,7 @@
     "express": "^4.17.3",
     "express-validation": "^3.0.8",
     "helmet": "^5.0.2",
+    "joi-objectid": "^4.0.2",
     "mongoose": "^6.2.4",
     "morgan": "^1.10.0"
   },
@@ -34,7 +35,8 @@
       "!src/**/*.test.js",
       "!src/**/launchers/**/*.js",
       "!src/index.js",
-      "!src/database/index.js"
+      "!src/database/index.js",
+      "!src/database/models/User.js"
     ]
   }
 }

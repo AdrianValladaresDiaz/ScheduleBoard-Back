@@ -30,6 +30,6 @@ const TaskJoiSchema = Joi.object({
 
 TaskSchema.statics.checkIfValid = (obj) => TaskJoiSchema.validate(obj);
 
-const Task = model("Task", TaskSchema, "tasks");
+const Task = model("Task", TaskSchema);
 
 module.exports = { Task, TaskSchema, TaskJoiSchema };

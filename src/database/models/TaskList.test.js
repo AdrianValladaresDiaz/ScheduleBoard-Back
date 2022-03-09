@@ -16,7 +16,7 @@ describe("Given a TaskList model", () => {
 
   describe("When validating a valid object", () => {
     test("Then it should not throw a validation error", () => {
-      const invalidTaskList = {
+      const validTaskList = {
         title: "valid title",
         tasks: [
           {
@@ -34,7 +34,7 @@ describe("Given a TaskList model", () => {
         ],
       };
 
-      const checkResult = TaskList.checkIfValid(invalidTaskList);
+      const checkResult = TaskList.checkIfValid(validTaskList);
 
       expect(checkResult).not.toHaveProperty("error");
     });
