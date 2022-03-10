@@ -140,10 +140,9 @@ describe("Given the userProjects router", () => {
 
       const { body } = await request(app)
         .get("/userProjects")
-        .set("authorization", validToken);
-      // .expect(200);
+        .set("authorization", validToken)
+        .expect(200);
 
-      // console.log(body);
       expect(body.message).toEqual(expectedMessage);
     });
   });
