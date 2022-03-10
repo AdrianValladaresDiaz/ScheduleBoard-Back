@@ -10,12 +10,7 @@ const userProjectsRouter = require("../routers/userProjectsRouter");
 const launchExpressApp = () => {
   debug("launching express app...");
   const app = express();
-  app.use(
-    cors({
-      origin:
-        "https://adrian-valladares-front-final-project-202201-bcn-murex.vercel.app/*",
-    })
-  );
+  app.use(cors());
   app.use(helmet());
   app.use(morgan("dev"));
 
