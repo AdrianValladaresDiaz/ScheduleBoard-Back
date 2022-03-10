@@ -7,6 +7,7 @@ const checkJwtHeader = require("../middleware/checkJwtHeader");
 const userProjectsRouter = express.Router();
 
 userProjectsRouter.use(json());
-userProjectsRouter.all("/", checkJwtHeader, auth, getUserProjectsController);
+
+userProjectsRouter.get("/", checkJwtHeader, auth, getUserProjectsController);
 
 module.exports = userProjectsRouter;

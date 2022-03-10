@@ -6,6 +6,7 @@ const helmet = require("helmet");
 const generalError = require("../middleware/generalError");
 const notFound = require("../middleware/notFound");
 const userProjectsRouter = require("../routers/userProjectsRouter");
+const pingRouter = require("../routers/pingRouter");
 
 const launchExpressApp = () => {
   debug("launching express app...");
@@ -14,6 +15,7 @@ const launchExpressApp = () => {
   app.use(helmet());
   app.use(morgan("dev"));
 
+  app.use("/ping", pingRouter);
   app.use("/userProjects", userProjectsRouter);
 
   app.use(notFound);
