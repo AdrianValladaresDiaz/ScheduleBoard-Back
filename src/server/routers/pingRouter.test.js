@@ -3,7 +3,6 @@ const { MongoMemoryServer } = require("mongodb-memory-server");
 const { default: mongoose } = require("mongoose");
 const request = require("supertest");
 const connectToDataBase = require("../../database");
-const { Project } = require("../../database/models/Project");
 const { User } = require("../../database/models/User");
 const launchExpressApp = require("../launchers/launchExpressApp");
 
