@@ -4,6 +4,7 @@ on: push
 
 jobs:
   test:
+    environment: GITHUB_ENV
     name: Test passes
     runs-on: ubuntu-latest
 
