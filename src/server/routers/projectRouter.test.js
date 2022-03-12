@@ -35,9 +35,25 @@ describe("Given projectRouter endpoint", () => {
       const expectedProject = { ...fakeProject };
       const { body } = await request(app)
         .get("/project")
-        .send({ projectId: correctProjectId });
+        .send({ projectId: correctProjectId })
+        .expect(200);
 
-      expect(expectedProject).toEqual(body.message);
+      expect(body.message).toEqual(expectedProject);
+    });
+  });
+
+  describe("When it receives a request at '/project' with an incorrect projectId", () => {
+    test("Then it should return 404 and message 'couldnt find project'", async () => {
+      const app = launchExpressApp();
+      const invalidId = "6228d27843471fa6be08c26f";
+      const expectedMessage = "couldn't find project";
+
+      const { body } = await request(app)
+        .get("/project")
+        .send({ projectId: invalidId })
+        .expect(404);
+
+      expect(body.message).toBe(expectedMessage);
     });
   });
 });
