@@ -16,11 +16,6 @@ const launchExpressApp = () => {
   app.use(helmet());
   app.use(morgan("dev"));
 
-  app.use((req, res, next) => {
-    debug("wooops");
-    next();
-  });
-
   app.use("/ping", pingRouter);
   app.use("/userProjects", userProjectsRouter);
   app.use("/project", projectRouter);
