@@ -8,6 +8,7 @@ const notFound = require("../middleware/notFound");
 const userProjectsRouter = require("../routers/userProjectsRouter");
 const pingRouter = require("../routers/pingRouter");
 const projectRouter = require("../routers/projectRouter");
+const deleteTaskRouter = require("../routers/deleteTaskRouter");
 
 const launchExpressApp = () => {
   debug("launching express app...");
@@ -19,6 +20,7 @@ const launchExpressApp = () => {
   app.use("/ping", pingRouter);
   app.use("/userProjects", userProjectsRouter);
   app.use("/project", projectRouter);
+  app.use("/deleteTask", deleteTaskRouter);
 
   app.use(notFound);
   app.use(generalError);
