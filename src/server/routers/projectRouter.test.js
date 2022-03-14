@@ -34,8 +34,7 @@ describe("Given projectRouter endpoint", () => {
       const correctProjectId = fakeProject._id;
       const expectedProject = { ...fakeProject };
       const { body } = await request(app)
-        .get("/project")
-        .send({ projectId: correctProjectId })
+        .get(`/project?projectId=${correctProjectId}`)
         .expect(200);
 
       expect(body.message).toEqual(expectedProject);
@@ -49,8 +48,7 @@ describe("Given projectRouter endpoint", () => {
       const expectedMessage = "couldn't find project";
 
       const { body } = await request(app)
-        .get("/project")
-        .send({ projectId: invalidId })
+        .get(`/project?projectId=${invalidId}`)
         .expect(404);
 
       expect(body.message).toBe(expectedMessage);
