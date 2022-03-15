@@ -1,5 +1,5 @@
 const express = require("express");
-const deleteTaskController = require("../controllers/deleteTaskController.js");
+const deleteTaskController = require("../controllers/deleteTaskController");
 
 const deleteTaskRouter = express.Router();
 

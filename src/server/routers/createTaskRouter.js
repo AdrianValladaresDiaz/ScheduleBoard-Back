@@ -5,6 +5,6 @@ const createTaskRouter = express.Router();
 
 createTaskRouter.use(express.json());
 
-createTaskRouter.all("/", createTaskController);
+createTaskRouter.post("/", createTaskController);
 
 module.exports = createTaskRouter;
