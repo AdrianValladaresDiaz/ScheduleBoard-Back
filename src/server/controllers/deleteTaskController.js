@@ -24,6 +24,7 @@ const deleteTaskController = async (req, res, next) => {
         message: `task ${taskId} removed from project ${projectId}`,
       });
     }
+
     return res.status(404).json({
       error: true,
       message: `task ${taskId} was not found in project ${projectId}`,
