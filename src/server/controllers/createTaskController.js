@@ -7,7 +7,7 @@ const createTaskController = async (req, res, next) => {
   try {
     debug("create task endpoint reached");
     const { projectId, taskListId, taskTitle } = req.query;
-    debug(`params ara ${projectId}, ${taskListId}, ${taskTitle})}`);
+    debug(`params are: ${projectId}, ${taskListId}, ${taskTitle})}`);
 
     const project = await Project.findById(projectId);
     const taskList = project?.taskLists.id(taskListId);
@@ -17,7 +17,7 @@ const createTaskController = async (req, res, next) => {
       project.save();
       return res.status(201).json({
         error: false,
-        message: project,
+        message: newTask,
       });
     }
     return res.status(404).json({
