@@ -6,19 +6,18 @@ const getTaskController = async (req, res, next) => {
   try {
     const { projectId, taskId } = req.query;
     debug(`params are: ${projectId}, ${taskId})}`);
-
-    const project = Project.findById(projectId);
+    const project = await Project.findById(projectId);
 
     let returnMessage;
-    project.taskLists.forEach((taskList) => {
-      const task = taskList.tasks.id(taskId);
+    project?.taskLists.forEach((taskList) => {
+      const task = taskList?.tasks.id(taskId);
       if (task) {
         returnMessage = task;
       }
     });
 
     return res.status(returnMessage ? 200 : 404).json({
-      error: !!returnMessage,
+      error: !returnMessage,
       message: returnMessage ?? "could not find task",
     });
   } catch (error) {
