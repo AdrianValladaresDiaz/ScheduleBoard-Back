@@ -5,7 +5,6 @@ const getTaskController = async (req, res, next) => {
   debug("get task endpoint reached");
   try {
     const { projectId, taskId } = req.query;
-    debug(`params are: ${projectId}, ${taskId})}`);
     const project = await Project.findById(projectId);
 
     let returnMessage;

@@ -10,7 +10,7 @@ const pingRouter = require("../routers/pingRouter");
 const projectRouter = require("../routers/projectRouter");
 const deleteTaskRouter = require("../routers/deleteTaskRouter");
 const createTaskRouter = require("../routers/createTaskRouter");
-const getTaskRouter = require("../routers/getTaskRouter");
+const taskRouter = require("../routers/taskRouter");
 
 const launchExpressApp = () => {
   debug("launching express app...");
@@ -24,7 +24,7 @@ const launchExpressApp = () => {
   app.use("/project", projectRouter);
   app.use("/deleteTask", deleteTaskRouter);
   app.use("/createTask", createTaskRouter);
-  app.use("/task", getTaskRouter);
+  app.use("/task", taskRouter);
 
   app.use(notFound);
   app.use(generalError);
