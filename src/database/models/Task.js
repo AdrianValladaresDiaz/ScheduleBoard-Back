@@ -26,6 +26,7 @@ const TaskJoiSchema = Joi.object({
   description: Joi.string(),
   workHours: Joi.number(),
   dueDate: Joi.date(),
+  assignedTo: Joi.array().items(Joi.string()),
 });
 
 TaskSchema.statics.checkIfValid = (obj) => TaskJoiSchema.validate(obj);
