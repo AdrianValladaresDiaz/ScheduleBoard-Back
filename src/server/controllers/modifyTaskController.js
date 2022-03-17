@@ -3,23 +3,28 @@ const { Project } = require("../../database/models/Project");
 
 const modifyTaskController = async (req, res, next) => {
   debug("modify task controller reached");
-  const { taskId, projectId } = req.body.params;
+  try {
+    const { taskId, projectId } = req.body.params;
+    const inputTask = req.body.data;
+    const project = await Project.findById(projectId);
 
-  const project = await Project.findById(projectId);
+    let updatedTask;
+    project.taskLists.forEach((taskList) => {
+      const task = taskList.tasks.id(taskId);
+      if (task) {
+        Object.assign(task, inputTask);
+        updatedTask = task;
+        project.save();
+      }
+    });
 
-  let foundTask;
-
-  project.taskLists.forEach((taskList) => {
-    const task = taskList.tasks.id(taskId);
-    if (task) {
-      foundTask = task;
-    }
-  });
-
-  return res.status(200).json({
-    error: false,
-    message: foundTask,
-  });
+    return res.status(200).json({
+      error: false,
+      message: updatedTask,
+    });
+  } catch (error) {
+    return next(error);
+  }
 };
 
 module.exports = modifyTaskController;
