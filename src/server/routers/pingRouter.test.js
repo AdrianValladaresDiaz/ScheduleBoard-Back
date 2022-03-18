@@ -19,7 +19,7 @@ beforeEach(async () => {
     name: "user",
     surname: "userSurname",
     password: "password",
-    mail: "mail@mail.uwu",
+    mail: "mail@gmail.com",
     projects: ["6228d27843471fa6be08c26e"],
   });
 });

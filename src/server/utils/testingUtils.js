@@ -73,6 +73,15 @@ const fakeUser = {
   name: "user",
   surname: "userSurname",
   password: "password",
+  mail: "mail@gmail.com",
+  projects: ["6228d27843471fa6be08c26e"],
+};
+
+const fakeUser2 = {
+  _id: "6228c95243471fa6be08c26c",
+  name: "user",
+  surname: "userSurname",
+  password: "password",
   mail: "mail@mail.uwu",
   projects: ["6228d27843471fa6be08c26e"],
 };
@@ -146,4 +155,9 @@ const fakeProjectReturn = {
   ],
 };
 
-module.exports = { fakeProject, fakeUser, fakeProjectReturn };
+module.exports = {
+  fakeProject,
+  fakeUser,
+  fakeProjectReturn,
+  fakeUserUwu: fakeUser2,
+};
