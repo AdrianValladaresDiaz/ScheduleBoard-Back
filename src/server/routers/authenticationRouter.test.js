@@ -1,11 +1,19 @@
+require("dotenv").config();
 const request = require("supertest");
 const { MongoMemoryServer } = require("mongodb-memory-server");
 const { default: mongoose } = require("mongoose");
+const jwt = require("jsonwebtoken");
 const connectToDataBase = require("../../database");
 const { Project } = require("../../database/models/Project");
 const { User } = require("../../database/models/User");
 const launchExpressApp = require("../launchers/launchExpressApp");
-const { fakeProject, fakeUser } = require("../utils/testingUtils");
+
+const {
+  fakeProject,
+  fakeUser,
+  fakeUser2,
+  fakeUser3,
+} = require("../utils/testingUtils");
 
 let mongoServer;
 beforeAll(async () => {
@@ -17,6 +25,8 @@ beforeAll(async () => {
 beforeEach(async () => {
   await Project.create(fakeProject);
   await User.create(fakeUser);
+  await User.create(fakeUser2);
+  await User.create(fakeUser3);
 });
 
 afterEach(async () => {
@@ -71,6 +81,47 @@ describe("Given the 'authentication' router", () => {
 
       expect(body.error).toBe(true);
       expect(body.message).toMatch(expectedMessage);
+    });
+  });
+
+  describe("When it gets a request at 'authentication/login with valid credentials", () => {
+    test("Then it should return a 200 and the token", async () => {
+      const app = launchExpressApp();
+      const payload = {
+        mail: "papaya@gmail.com",
+        password: "papaya",
+      };
+      const expectedResponse = {
+        name: "my pass is papaya",
+        surname: "my pass is papaya",
+        mail: "papaya@gmail.com",
+      };
+
+      const { body } = await request(app)
+        .post("/authentication/login")
+        .send({ data: payload });
+      const userInfo = jwt.decode(body.message.token);
+
+      expect(body.error).toBe(false);
+      expect(userInfo).toEqual(expect.objectContaining(expectedResponse));
+    });
+  });
+
+  describe("When it gets a request at 'authentication/login with invalid credentials", () => {
+    test("Then it should return a 200 and the token", async () => {
+      const app = launchExpressApp();
+      const payload = {
+        mail: "papaya@gmail.com",
+        password: "badPassword",
+      };
+      const expectedResponse = "user not found";
+
+      const { body } = await request(app)
+        .post("/authentication/login")
+        .send({ data: payload });
+
+      expect(body.error).toBe(true);
+      expect(body.message).toBe(expectedResponse);
     });
   });
 });

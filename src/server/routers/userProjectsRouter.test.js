@@ -6,11 +6,7 @@ const connectToDataBase = require("../../database");
 const { Project } = require("../../database/models/Project");
 const { User } = require("../../database/models/User");
 const launchExpressApp = require("../launchers/launchExpressApp");
-const {
-  fakeProject,
-  fakeUser,
-  fakeUserUwu: fakeUser2,
-} = require("../utils/testingUtils");
+const { fakeProject, fakeUser, fakeUser2 } = require("../utils/testingUtils");
 
 let mongoServer;
 beforeAll(async () => {

@@ -10,7 +10,6 @@ const auth = (req, res, next) => {
       req.userInfo = { ...verificationResult };
       debug("token validated");
     }
-
     return next();
   } catch (error) {
     return next(error);

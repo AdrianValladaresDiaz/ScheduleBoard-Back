@@ -86,6 +86,15 @@ const fakeUser2 = {
   projects: ["6228d27843471fa6be08c26e"],
 };
 
+const fakeUser3 = {
+  _id: "6234af5d1bdd41d321c5bdc5",
+  name: "my pass is papaya",
+  surname: "my pass is papaya",
+  password: "$2b$10$w71Pt91IKE5lCyHQMaBA3uHwWR2N2FGPQGnokJCRIgHnFOa3oad9e",
+  mail: "papaya@gmail.com",
+  projects: ["6228d27843471fa6be08c26e"],
+};
+
 const fakeProjectReturn = {
   id: "6228d27843471fa6be08c26e",
   title: "Placeholder project 1",
@@ -159,5 +168,6 @@ module.exports = {
   fakeProject,
   fakeUser,
   fakeProjectReturn,
-  fakeUserUwu: fakeUser2,
+  fakeUser2,
+  fakeUser3,
 };
