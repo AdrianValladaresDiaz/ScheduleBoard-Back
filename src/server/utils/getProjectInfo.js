@@ -14,6 +14,7 @@ const getProjectInfo = async (projectId) => {
 
     return { title, dueDate, id, users };
   }
+  return null;
 };
 
 module.exports = getProjectInfo;
