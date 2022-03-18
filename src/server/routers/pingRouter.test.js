@@ -15,7 +15,7 @@ beforeAll(async () => {
 
 beforeEach(async () => {
   await User.create({
-    _id: "6228c95243471fa6be08c26b",
+    id: "6228c95243471fa6be08c26b",
     name: "user",
     surname: "userSurname",
     password: "password",
