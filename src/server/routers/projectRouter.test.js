@@ -3,7 +3,7 @@ const { default: mongoose } = require("mongoose");
 const request = require("supertest");
 const connectToDataBase = require("../../database");
 const { Project } = require("../../database/models/Project");
-const { fakeProject } = require("../utils/testingUtils");
+const { fakeProject, fakeProjectReturn } = require("../utils/testingUtils");
 const launchExpressApp = require("../launchers/launchExpressApp");
 
 let mongoServer;
@@ -32,7 +32,7 @@ describe("Given projectRouter endpoint", () => {
       const app = launchExpressApp();
       // eslint-disable-next-line no-underscore-dangle
       const correctProjectId = fakeProject._id;
-      const expectedProject = { ...fakeProject };
+      const expectedProject = { ...fakeProjectReturn };
       const { body } = await request(app)
         .get(`/project?projectId=${correctProjectId}`)
         .expect(200);

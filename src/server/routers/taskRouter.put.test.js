@@ -35,7 +35,7 @@ describe("Given the 'updateTask' endpoint'", () => {
       const projectId = "6228d27843471fa6be08c26e";
       const taskId = "622c8db5cea9959b117bb1b5";
       const expectedTask = {
-        _id: "622c8db5cea9959b117bb1b5",
+        id: "622c8db5cea9959b117bb1b5",
         assignedTo: [],
         title: "A totally new title",
         description: "A totally new description for task with task title 3",

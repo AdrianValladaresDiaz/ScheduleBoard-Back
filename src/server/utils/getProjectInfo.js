@@ -5,11 +5,11 @@ const getProjectInfo = async (projectId) => {
   await project.populate("users");
   const users = [];
   project.users.forEach((user) => {
-    const { name, surname, _id: id } = user;
+    const { name, surname, id } = user;
     users.push({ name, surname, id });
   });
 
-  const { title, dueDate, _id: id } = project;
+  const { title, dueDate, id } = project;
 
   return { title, dueDate, id, users };
 };
