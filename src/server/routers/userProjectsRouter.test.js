@@ -6,7 +6,11 @@ const connectToDataBase = require("../../database");
 const { Project } = require("../../database/models/Project");
 const { User } = require("../../database/models/User");
 const launchExpressApp = require("../launchers/launchExpressApp");
-const { fakeProject, fakeUser } = require("../utils/testingUtils");
+const {
+  fakeProject,
+  fakeUser,
+  fakeUserUwu: fakeUser2,
+} = require("../utils/testingUtils");
 
 let mongoServer;
 beforeAll(async () => {
@@ -18,6 +22,7 @@ beforeAll(async () => {
 beforeEach(async () => {
   await Project.create(fakeProject);
   await User.create(fakeUser);
+  await User.create(fakeUser2);
 });
 
 afterEach(async () => {

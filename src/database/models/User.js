@@ -31,7 +31,7 @@ UserSchema.statics.checkIfValid = (obj) => {
     name: Joi.string().required(),
     surname: Joi.string().required(),
     password: Joi.string().required(),
-    mail: Joi.string().required(),
+    mail: Joi.string().email().required(),
     projects: Joi.array().items(Joi.objectId()),
   });
   return joiSchema.validate(obj);

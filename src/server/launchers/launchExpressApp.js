@@ -11,6 +11,7 @@ const projectRouter = require("../routers/projectRouter");
 const deleteTaskRouter = require("../routers/deleteTaskRouter");
 const createTaskRouter = require("../routers/createTaskRouter");
 const taskRouter = require("../routers/taskRouter");
+const authenticationRouter = require("../routers/authenticationRouter");
 
 const launchExpressApp = () => {
   debug("launching express app...");
@@ -25,6 +26,7 @@ const launchExpressApp = () => {
   app.use("/deleteTask", deleteTaskRouter);
   app.use("/createTask", createTaskRouter);
   app.use("/task", taskRouter);
+  app.use("/authentication", authenticationRouter);
 
   app.use(notFound);
   app.use(generalError);
