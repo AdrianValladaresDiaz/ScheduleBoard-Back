@@ -116,6 +116,64 @@
         "header": []
       },
       "response": []
+    },
+    {
+      "name": "login",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"data\": {\n    \"mail\": \"adri.valla@gmail.com\",\n    \"password\": \"papaya\"\n}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{origin}}authentication/login",
+          "host": [
+            "{{origin}}authentication"
+          ],
+          "path": [
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "register",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\"data\": {\n    \"mail\": \"adri.valla@gmail.com\",\n    \"password\": \"papaya\",\n    \"name\": \"adri\",\n    \"surname\": \"valla\"\n}}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{origin}}authentication/register",
+          "host": [
+            "{{origin}}authentication"
+          ],
+          "path": [
+            "register"
+          ]
+        }
+      },
+      "response": []
     }
   ],
   "auth": {

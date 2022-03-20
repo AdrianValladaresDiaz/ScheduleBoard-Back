@@ -88,4 +88,50 @@ describe("Given the userProjects router", () => {
       expect(body.message).toEqual(expectedMessage);
     });
   });
+
+  describe("When it gets a post request at '/userProjects' with valid token and valid project data", () => {
+    test("Then it should return a 201 and message containing newly created project", async () => {
+      const validToken =
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidXNlciIsInN1cm5hbWUiOiJ1c2VyU3VybmFtZSIsIm1haWwiOiJtYWlsQG1haWwudXd1IiwiYWxnIjoiSFMyNTYifQ.g7FYsSG-NxbMdqjrvJxfpZgPDh7ShdM0YmwYEC7GD7g";
+      const app = launchExpressApp();
+      const requestBody = {
+        data: {
+          title: "testing title",
+          dueDate: new Date(),
+        },
+      };
+
+      const { body } = await request(app)
+        .post("/userProjects")
+        .set("authorization", validToken)
+        .send(requestBody)
+        .expect(201);
+
+      const responseData = body.message;
+
+      expect(requestBody.data.title).toBe(responseData.title);
+    });
+  });
+
+  describe("When it gets a post request at '/userProjects' with valid token and invalid project data", () => {
+    test("Then it should return a 400 and message containing newly created project", async () => {
+      const validToken =
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoidXNlciIsInN1cm5hbWUiOiJ1c2VyU3VybmFtZSIsIm1haWwiOiJtYWlsQG1haWwudXd1IiwiYWxnIjoiSFMyNTYifQ.g7FYsSG-NxbMdqjrvJxfpZgPDh7ShdM0YmwYEC7GD7g";
+      const app = launchExpressApp();
+      const requestBody = {
+        data: {
+          title: "testing title",
+          badStuff: "whatever",
+        },
+      };
+
+      const { body } = await request(app)
+        .post("/userProjects")
+        .set("authorization", validToken)
+        .send(requestBody)
+        .expect(400);
+
+      expect(body.error).toBeTruthy();
+    });
+  });
 });

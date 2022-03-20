@@ -103,7 +103,7 @@ describe("Given the 'authentication' router", () => {
       const userInfo = jwt.decode(body.message.token);
 
       expect(body.error).toBe(false);
-      expect(userInfo).toEqual(expect.objectContaining(expectedResponse));
+      expect(userInfo).toMatchObject(expectedResponse);
     });
   });
 

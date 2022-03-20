@@ -1,7 +1,7 @@
 const express = require("express");
 const auth = require("../middleware/auth");
 const checkJwtHeader = require("../middleware/checkJwtHeader");
-const pong = require("../middleware/pong");
+const pong = require("../controllers/pong");
 
 const pingRouter = express.Router();
 
