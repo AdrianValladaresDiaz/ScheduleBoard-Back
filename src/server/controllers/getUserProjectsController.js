@@ -8,7 +8,9 @@ const getUserProjectsController = async (req, res, next) => {
     await Promise.all(
       user.projects?.map(async (projectId) => {
         const projectInfo = await getProjectInfo(projectId);
-        projects.push(projectInfo);
+        if (projectInfo) {
+          projects.push(projectInfo);
+        }
       })
     );
 
