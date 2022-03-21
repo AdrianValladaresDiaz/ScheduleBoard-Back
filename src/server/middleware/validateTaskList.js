@@ -3,8 +3,8 @@ const { TaskList } = require("../../database/models/TaskList");
 
 const validateTaskList = (req, res, next) => {
   debug("running task validation...");
-  const user = req.body.data;
-  const validation = TaskList.checkIfValid(user);
+  const taskList = req.body.data;
+  const validation = TaskList.checkIfValid(taskList);
 
   if (validation.error) {
     debug(validation.error);
