@@ -11,7 +11,7 @@ const createTaskController = async (req, res, next) => {
 
     const project = await Project.findById(projectId);
     const taskList = project?.taskLists.id(taskListId);
-    if (project && taskList) {
+    if (project) {
       const newTask = new Task({ title: taskTitle });
       taskList.tasks.push(newTask);
       project.save();
