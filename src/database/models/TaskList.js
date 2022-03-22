@@ -8,7 +8,7 @@ const TaskListSchema = new Schema({
 });
 
 const TaskListJoiSchema = Joi.object({
-  title: Joi.string().max(35).required(),
+  title: Joi.string().max(50).required(),
   tasks: Joi.array().items(TaskJoiSchema),
 }).required();
 

@@ -10,7 +10,8 @@ const createTaskListController = async (req, res, next) => {
     const taskList = new TaskList(req.body.data);
     const project = await Project.findById(projectId);
     project.taskLists.push(taskList);
-
+    await project.save();
+    debug(`taskList created: ${taskList}`);
     return res.status(201).json({
       error: false,
       message: taskList,
